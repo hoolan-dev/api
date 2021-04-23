@@ -12,6 +12,4 @@ class Property(models.Model):
     date_modified = models.DateField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        print('')
-
         super(Property, self).save(*args, **kwargs)
