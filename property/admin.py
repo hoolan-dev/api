@@ -3,7 +3,7 @@ import subprocess
 
 from django.contrib import admin
 
-from property.models import Property
+from property.models import Property, Contributor
 
 
 @admin.action(description='Generate Solana id')
@@ -34,6 +34,11 @@ def generate_solana_id_admin(modeladmin, request, queryset):
         property_obj.solana_id = token_id
         property_obj.save()
         print(property_obj.id)
+
+
+@admin.register(Contributor)
+class ContributorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type', 'identification', 'name', 'property', 'city',)
 
 
 @admin.register(Property)
